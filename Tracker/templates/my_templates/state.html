@@ -1,0 +1,73 @@
+<!doctype-html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: crimson">
+  <a class="navbar-brand" href="{% url 'home' %}">COVID-19_INDIA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'state' %}">STATE <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'district' %}">DISTRICT <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="div1">
+            <img src="{% static 'images/precaution.jpg' %}">
+            <br>
+            <br>
+            <h1 class="head" style="color:black font:bold" >STATE/UT WISE CASES </h1>
+            <label class="label1" for="City">Enter a State/UT: </label>
+            <select class="btn btn-success" name="state">
+                <option value="-------">----------</option>
+                {% for state in states %}
+                <option value="{{state}}">{{state}}</option>
+                {% endfor %}
+        </select><br><br>
+        <input class="btn btn-success" type=submit value="TRACK">
+            <br><br>
+            <table class="table table-striped table-dark" style="background-color: darkcyan">
+              <thead>
+                <tr>
+                    <th scope="col">STATE</th>
+                    <th scope="col">CONFIRMED CASES</th>
+                    <th scope="col">ACTIVE CASES</th>
+                    <th scope="col">RECOVERED</th>
+                    <th scope="col">DECEASED</th>
+                </tr>
+              </thead>
+                <tbody>
+                    {% if state_data %}
+                    <tr>
+                        <td>{{state_data.state}}</td>
+                        <td>{{state_data.confirmed_cases}}</td>
+                        <td>{{state_data.active_cases}}</td>
+                        <td>{{state_data.recovered}}</td>
+                        <td>{{state_data.deceased}}</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
