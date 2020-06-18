@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import urllib3
+
 import json
 import requests
 # Create your views here.
