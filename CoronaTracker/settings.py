@@ -21,7 +21,7 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '38mdzh*&#(@(r3zdnt+mq=8%$1kw*r$!3*f)#p1a9v-yz3a_*!'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'CoronaTracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testdb',
-        'USER':'root',
-        'PASSWORD':'aditya',
+        'NAME': '',
+        'USER':'',
+        'PASSWORD':'',
         'HOST':'localhost',
         'PORT':'3306',
     }
